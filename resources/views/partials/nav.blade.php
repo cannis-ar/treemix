@@ -2,7 +2,7 @@
     <div class="container">
         <div class="nav__inner">
             <a href="{{ route('home') }}" class="nav__brand" aria-label="Treemix Profesional - Inicio">
-                <img src="{{ asset('treemix.webp') }}" alt="" class="nav__brand-logo">
+                <img src="{{ asset('logo.png') }}" alt="" class="nav__brand-logo">
                 <span class="nav__brand-text">
                     <span>Treemix</span>
                     <small>Profesional</small>
@@ -20,6 +20,10 @@
 
             <a href="https://www.tiendatreemix.com.ar/" target="_blank" rel="noopener" class="nav__cta nav__cta--desktop">
                 Tienda
+            </a>
+
+            <a href="https://www.tiendatreemix.com.ar/" target="_blank" rel="noopener" class="nav__cta nav__cta--mobile" style="display:none;">
+                Ingresar a Tienda
             </a>
 
             <button type="button" class="nav__toggle" data-nav-toggle aria-label="Abrir menú">
