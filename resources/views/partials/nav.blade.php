@@ -15,6 +15,7 @@
                 <li><a href="{{ route('tecnologia') }}" class="nav__link {{ request()->routeIs('tecnologia') ? 'active' : '' }}">Tecnología</a></li>
                 <li><a href="{{ route('resultados') }}" class="nav__link {{ request()->routeIs('resultados') ? 'active' : '' }}">Resultados</a></li>
                 <li><a href="{{ route('faq') }}" class="nav__link {{ request()->routeIs('faq') ? 'active' : '' }}">FAQ</a></li>
+                <li><a href="{{ route('calculator.index') }}" class="nav__link {{ request()->routeIs('calculator.*') ? 'active' : '' }}">Calculadora</a></li>
                 <li><a href="{{ route('contact.show') }}" class="nav__link {{ request()->routeIs('contact.*') ? 'active' : '' }}">Contacto</a></li>
             </ul>
 
