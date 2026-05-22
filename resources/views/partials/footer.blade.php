@@ -32,15 +32,16 @@
             <div>
                 <p class="footer__col-title">Seguinos</p>
                 <ul class="footer__list">
-                    <li><a href="https://www.instagram.com/treemixpro" target="_blank" rel="noopener">Instagram Pro</a></li>
-                    <li><a href="https://www.instagram.com/treemix.agrobio/" target="_blank" rel="noopener">Instagram Agro</a></li>
-                    <li><a href="https://www.facebook.com/treemixpro" target="_blank" rel="noopener">Facebook</a></li>
+                    <li><a href="https://www.instagram.com/treemixpro" target="_blank" rel="noopener">Instagram</a></li>
                 </ul>
             </div>
         </div>
 
         <div class="footer__bottom">
-            <span>© {{ date('Y') }} Treemix Profesional. Todos los derechos reservados.</span>
+            <div style="display: flex; flex-direction: column">
+                <span>© {{ date('Y') }} Treemix Profesional. Todos los derechos reservados.</span>
+                <span>Developed by <a href="https://cannis.org" target="_blank">cannis.org</a></span>
+            </div>
             <div class="footer__socials">
                 <a href="https://www.instagram.com/treemixpro" target="_blank" rel="noopener" class="footer__social" aria-label="Instagram">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>

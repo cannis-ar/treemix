@@ -18,11 +18,10 @@
                     cada cultivo.
                 </h1>
                 <p class="hero__lead">
-                    La línea Profesional de Treemix concentra años de desarrollo biotecnológico en formulaciones diseñadas para cultivadores que no aceptan resultados promedio.
-                </p>
+                    La línea Profesional de Treemix concentra años de desarrollo biotecnológico en formulaciones diseñadas para cultivadores que buscan máxima producción y por sobre todo, calidad.                </p>
                 <div class="hero__actions">
                     <a href="{{ route('products.index') }}" class="btn btn--primary">
-                        Ver la línea
+                        Ver toda la línea
                         <span class="btn__arrow">→</span>
                     </a>
                     <a href="{{ route('tecnologia') }}" class="btn btn--ghost">
@@ -63,9 +62,9 @@
     <div class="container">
         <div class="section__head reveal">
             <span class="eyebrow">La diferencia</span>
-            <h2 class="section__title">Ciencia, no <em>magia</em>.</h2>
+            <h2 class="section__title">Es ciencia, no <em>magia</em>.</h2>
             <p class="section__intro">
-                Cada producto de la línea Profesional nace en nuestro laboratorio de Buenos Aires, donde biotecnólogos validan cada formulación con métricas reales de campo.
+                Cada producto de la línea Profesional nace en nuestro laboratorio, donde biotecnólogos validan cada formulación con métricas reales de campo.
             </p>
         </div>
 
@@ -81,14 +80,21 @@
                 <span class="tech__card-num">02</span>
                 <h3 class="tech__card-title">100% natural y orgánico</h3>
                 <p class="tech__card-text">
-                    Microorganismos benéficos, enzimas y extractos vegetales. Cero agroquímicos sintéticos, cero residuos. Apto para certificaciones orgánicas.
+                    Microorganismos benéficos, enzimas y extractos vegetales. Cero agroquímicos sintéticos, cero residuos. Apto para certificaciones orgánicas. Aprobados por SENASA
                 </p>
             </article>
             <article class="tech__card">
                 <span class="tech__card-num">03</span>
+                <h3 class="tech__card-title">Atención personalizada</h3>
+                <p class="tech__card-text">
+                    Brindamos atencion pre y post venta a grandes cultivos para asegurarnos que tengas el mejor rendimiento.
+                </p>
+            </article>
+            <article class="tech__card">
+                <span class="tech__card-num">04</span>
                 <h3 class="tech__card-title">Resultados consistentes</h3>
                 <p class="tech__card-text">
-                    Lo que se mide se mejora. Trabajamos junto a cultivadores profesionales y agroecológicos para validar cada ciclo y refinar protocolos.
+                    Lo que se mide se mejora. Trabajamos constantemente junto a cultivadores profesionales para validar cada ciclo y refinar protocolos.
                 </p>
             </article>
         </div>
@@ -101,7 +107,7 @@
         <div class="products__head reveal">
             <div class="section__head section__head--left">
                 <span class="eyebrow">La línea</span>
-                <h2 class="section__title">Productos <em>seleccionados</em>.</h2>
+                <h2 class="section__title">Productos <em>destacados</em>.</h2>
                 <p class="section__intro">
                     Cada producto cubre una etapa específica del ciclo, desarrollado para trabajar en conjunto o de manera independiente.
                 </p>
@@ -146,27 +152,16 @@
 
             <div class="lab__copy reveal">
                 <span class="eyebrow">Laboratorio Treemix</span>
-                <h2 class="section__title" style="font-size: clamp(2.25rem, 4.5vw, 3.5rem); margin-top:1.5rem;">Datos, no <em>promesas</em>.</h2>
+                <h2 class="section__title" style="font-size: clamp(2.25rem, 4.5vw, 3.5rem); margin-top:1.5rem;">Datos, no promesas.</h2>
                 <p>
-                    Trabajamos con cultivadores profesionales en cada ciclo. Cada lote sale del laboratorio con métricas verificables y trazabilidad completa.
+                    Trabajamos con cultivadores profesionales que utilizan distintos mètodos  de cultivo y aplican nuestros productos en combinaciòn con diferentes planes de cultivo.
                 </p>
                 <p>
-                    Nuestra línea Profesional incorpora cepas seleccionadas y concentraciones aumentadas que en la línea estándar no son posibles.
+                    Nuestra línea Profesional incorpora cepas seleccionadas y concentraciones aumentadas que en la línea estándar no están disponibles.
                 </p>
 
-                <div class="lab__metrics">
-                    <div>
-                        <span class="lab__metric-num">8+</span>
-                        <span class="lab__metric-label">Productos en la línea Profesional</span>
-                    </div>
-                    <div>
-                        <span class="lab__metric-num">2026</span>
-                        <span class="lab__metric-label">Nueva edición limitada disponible</span>
-                    </div>
-                </div>
-
-                <a href="{{ route('tecnologia') }}" class="btn btn--primary">
-                    Conocer el proceso
+                <a href="{{ route('resultados') }}" class="btn btn--primary">
+                    Ver resultados
                     <span class="btn__arrow">→</span>
                 </a>
             </div>

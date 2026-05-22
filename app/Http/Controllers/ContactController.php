@@ -21,6 +21,7 @@ class ContactController extends Controller
             'name' => ['required', 'string', 'max:120'],
             'email' => ['required', 'email:rfc', 'max:180'],
             'phone' => ['nullable', 'string', 'max:40'],
+            'reason'  => ['required', 'in:Compras,Asesoramiento,Servicios para ONGs e I+D'],
             'subject' => ['required', 'string', 'max:160'],
             'message' => ['required', 'string', 'max:4000'],
             'honeypot' => ['nullable', 'size:0'], // anti-spam
@@ -28,6 +29,7 @@ class ContactController extends Controller
             'required' => 'Este campo es obligatorio.',
             'email' => 'Debe ser un email válido.',
             'max' => 'Demasiado largo.',
+            'in'  => 'Opción no válida.',
         ]);
 
         // Honeypot: si vino con algo, fingimos éxito y descartamos.
@@ -36,19 +38,11 @@ class ContactController extends Controller
         }
 
         try {
-            Mail::raw(
-                "Nuevo contacto desde el sitio Treemix Profesional\n\n" .
-                "Nombre: {$data['name']}\n" .
-                "Email: {$data['email']}\n" .
-                "Teléfono: " . ($data['phone'] ?? '-') . "\n" .
-                "Asunto: {$data['subject']}\n\n" .
-                "Mensaje:\n{$data['message']}",
-                function ($message) use ($data) {
-                    $message->to(config('mail.from.address'))
-                        ->subject('[Web] ' . $data['subject'])
-                        ->replyTo($data['email'], $data['name']);
-                }
-            );
+            Mail::send('emails.contact', $data, function ($message) use ($data) {
+                $message->to(config('mail.from.address'))
+                    ->subject('[Web] ' . $data['reason'] . ' — ' . $data['subject'])
+                    ->replyTo($data['email'], $data['name']);
+            });
         } catch (\Throwable $e) {
             Log::error('Error enviando contacto', ['exception' => $e]);
             return back()->withInput()->with('status', 'error');

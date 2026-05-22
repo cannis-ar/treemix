@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\CalculatorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
@@ -15,6 +16,8 @@ Route::get('/productos/{slug}', [ProductController::class, 'show'])->name('produ
 Route::get('/tecnologia', [PageController::class, 'tecnologia'])->name('tecnologia');
 Route::get('/resultados', [PageController::class, 'resultados'])->name('resultados');
 Route::get('/preguntas-frecuentes', [PageController::class, 'faq'])->name('faq');
+
+Route::get('/nosotros', [AboutController::class, 'index'])->name('about');
 
 Route::get('/calculadora', [CalculatorController::class, 'index'])->name('calculator.index');
 

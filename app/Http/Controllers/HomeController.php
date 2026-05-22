@@ -7,16 +7,16 @@ use Illuminate\View\View;
 
 class HomeController extends Controller
 {
-    public function index(): View
-    {
-        $featured = collect(ProductCatalog::all())
-            ->sortBy('order')
-            ->take(6)
-            ->values()
-            ->all();
+	public function index(): View
+	{
+		$slugs    = ['tree-mix-pro', 'biok-nn', 'zym', 'treemix-a'];
+		$all      = collect(ProductCatalog::all())->keyBy('slug');
+		$featured = collect($slugs)
+			->map(fn($slug) => $all->get($slug))
+			->filter()
+			->values()
+			->all();
 
-        return view('pages.home', [
-            'featured' => $featured,
-        ]);
-    }
+		return view('pages.home', compact('featured'));
+	}
 }

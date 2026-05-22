@@ -5,6 +5,39 @@
 
 @section('content')
 
+<style>
+.contact-form select {
+    width: 100%;
+    background: rgba(10, 10, 11, 0.6);
+    border: 1px solid rgba(200, 200, 208, 0.12);
+    border-radius: 6px;
+    padding: 1rem 1.125rem;
+    color: var(--silver-100);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888894' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1.125rem center;
+    padding-right: 2.5rem;
+}
+
+.contact-form select:focus {
+    outline: none;
+    border-color: rgba(200, 200, 208, 0.35);
+    background-color: rgba(10, 10, 11, 0.85);
+    box-shadow: 0 0 0 4px rgba(200, 200, 208, 0.05);
+}
+
+.contact-form select option {
+    background: #111114;
+    color: #e5e5ea;
+}
+</style>
+
 <section style="padding-top: 12rem; padding-bottom: 5rem;">
     <div class="container">
         <div class="section__head reveal">
@@ -46,6 +79,17 @@
                         <input id="email" name="email" type="email" value="{{ old('email') }}" required maxlength="180" autocomplete="email">
                         @error('email') <p class="contact-form__error">{{ $message }}</p> @enderror
                     </div>
+                </div>
+
+                <div class="contact-form__field">
+                    <label for="reason">Motivo de contacto</label>
+                    <select name="reason" id="reason" required>
+                        <option value="" disabled selected>Seleccioná un motivo</option>
+                        <option value="Compras" {{ old('reason') === 'Compras' ? 'selected' : '' }}>Compras</option>
+                        <option value="Asesoramiento" {{ old('reason') === 'Asesoramiento' ? 'selected' : '' }}>Asesoramiento</option>
+                        <option value="Servicios para ONGs e I+D" {{ old('reason') === 'Servicios para ONGs e I+D' ? 'selected' : '' }}>Servicios para ONGs e I+D</option>
+                    </select>
+                    @error('reason')<span class="contact-form__error">{{ $message }}</span>@enderror
                 </div>
 
                 <div class="contact-form__row">

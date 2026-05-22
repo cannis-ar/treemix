@@ -2,9 +2,9 @@
     <div class="container">
         <div class="nav__inner">
             <a href="{{ route('home') }}" class="nav__brand" aria-label="Treemix Profesional - Inicio">
-                <img src="{{ asset('logo.png') }}" alt="" class="nav__brand-logo">
+                <img src="{{ asset('treemix.webp') }}" alt="" class="nav__brand-logo">
                 <span class="nav__brand-text">
-                    <span>Treemix</span>
+                    <span>Tree<span style="color: forestgreen"> Mix</span></span>
                     <small>Profesional</small>
                 </span>
             </a>
@@ -12,8 +12,7 @@
             <ul class="nav__menu" data-nav-menu>
                 <li><a href="{{ route('home') }}" class="nav__link {{ request()->routeIs('home') ? 'active' : '' }}">Inicio</a></li>
                 <li><a href="{{ route('products.index') }}" class="nav__link {{ request()->routeIs('products.*') ? 'active' : '' }}">Productos</a></li>
-                <li><a href="{{ route('tecnologia') }}" class="nav__link {{ request()->routeIs('tecnologia') ? 'active' : '' }}">Tecnología</a></li>
-                <li><a href="{{ route('resultados') }}" class="nav__link {{ request()->routeIs('resultados') ? 'active' : '' }}">Resultados</a></li>
+                <li><a href="{{ route('about') }}" class="nav__link {{ request()->routeIs('about') ? 'active' : '' }}">Nosotros</a></li>
                 <li><a href="{{ route('faq') }}" class="nav__link {{ request()->routeIs('faq') ? 'active' : '' }}">FAQ</a></li>
                 <li><a href="{{ route('calculator.index') }}" class="nav__link {{ request()->routeIs('calculator.*') ? 'active' : '' }}">Calculadora</a></li>
                 <li><a href="{{ route('contact.show') }}" class="nav__link {{ request()->routeIs('contact.*') ? 'active' : '' }}">Contacto</a></li>
@@ -35,3 +34,4 @@
         </div>
     </div>
 </nav>
+
