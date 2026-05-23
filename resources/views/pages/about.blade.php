@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Nosotros · Treemix Profesional')
-@section('meta_description', 'Conocé a Treemix: 8 años de experiencia en biotecnología aplicada al cultivo. Laboratorio propio, fórmulas exclusivas y productos veganos, agroecológicos y cruelty free.')
+@section('meta_description', 'Conocé a Treemix: 10 años de experiencia en biotecnología aplicada al cultivo. Laboratorio propio, fórmulas exclusivas y productos veganos, agroecológicos y cruelty free.')
 
 @section('content')
 
@@ -54,7 +54,7 @@
                     <span class="tech__card-num">02</span>
                     <h3 class="tech__card-title">Trayectoria</h3>
                     <p class="tech__card-text">
-                        Contamos con 8 años de experiencia en el mercado, lo que nos ha permitido perfeccionar nuestras fórmulas y procesos
+                        Contamos con 10 años de experiencia en el mercado, lo que nos ha permitido perfeccionar nuestras fórmulas y procesos
                         para satisfacer las necesidades de nuestros clientes ciclo tras ciclo.
                     </p>
                 </div>

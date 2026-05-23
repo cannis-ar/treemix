@@ -20,7 +20,8 @@ class ContactController extends Controller
         $data = $request->validate([
             'name' => ['required', 'string', 'max:120'],
             'email' => ['required', 'email:rfc', 'max:180'],
-            'phone' => ['nullable', 'string', 'max:40'],
+						'crop_type' => ['required', 'in:Reprocann,ONG,I+D'],
+						'phone' => ['nullable', 'string', 'max:40'],
             'reason'  => ['required', 'in:Compras,Asesoramiento,Servicios para ONGs e I+D'],
             'subject' => ['required', 'string', 'max:160'],
             'message' => ['required', 'string', 'max:4000'],
@@ -37,12 +38,16 @@ class ContactController extends Controller
             return redirect()->route('contact.show')->with('status', 'ok');
         }
 
-        try {
-            Mail::send('emails.contact', $data, function ($message) use ($data) {
-                $message->to(config('mail.from.address'))
-                    ->subject('[Web] ' . $data['reason'] . ' — ' . $data['subject'])
-                    ->replyTo($data['email'], $data['name']);
-            });
+			try {
+				$viewData = $data;
+				$viewData['body'] = $data['message'];
+				unset($viewData['message'], $viewData['honeypot']);
+
+				Mail::send('emails.contact', $viewData, function ($message) use ($data) {
+					$message->to(config('mail.from.address'))
+						->subject($data['name'] . ' te contactó por ' . $data['reason'])
+						->replyTo($data['email'], $data['name']);
+				});
         } catch (\Throwable $e) {
             Log::error('Error enviando contacto', ['exception' => $e]);
             return back()->withInput()->with('status', 'error');

@@ -61,7 +61,7 @@
 
             @if(session('status') === 'error')
                 <div class="contact-form__alert contact-form__alert--error">
-                    Ocurrió un error enviando el mensaje. Intentá nuevamente en unos minutos o escribinos a hola@treemix.pro
+                    Ocurrió un error enviando el mensaje. Intentá nuevamente en unos minutos o escribinos a info@treemix.pro
                 </div>
             @endif
 
@@ -79,6 +79,17 @@
                         <input id="email" name="email" type="email" value="{{ old('email') }}" required maxlength="180" autocomplete="email">
                         @error('email') <p class="contact-form__error">{{ $message }}</p> @enderror
                     </div>
+                </div>
+
+                <div class="contact-form__field">
+                    <label for="crop_type">Tipo de cultivo</label>
+                    <select name="crop_type" id="crop_type" required>
+                        <option value="" disabled selected>Seleccioná el tipo</option>
+                        <option value="Reprocann" {{ old('crop_type') === 'Reprocann' ? 'selected' : '' }}>Reprocann</option>
+                        <option value="ONG"       {{ old('crop_type') === 'ONG'       ? 'selected' : '' }}>ONG</option>
+                        <option value="I+D"       {{ old('crop_type') === 'I+D'       ? 'selected' : '' }}>I+D</option>
+                    </select>
+                    @error('crop_type')<span class="contact-form__error">{{ $message }}</span>@enderror
                 </div>
 
                 <div class="contact-form__field">

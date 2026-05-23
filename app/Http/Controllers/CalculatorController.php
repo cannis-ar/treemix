@@ -9,7 +9,11 @@ class CalculatorController extends Controller
 {
     public function index(): View
     {
-        $products = collect(ProductCatalog::all())->sortBy('order')->values()->all();
+			$products = collect(ProductCatalog::all())
+				->where('slug', '!=', 'biodrop')
+				->sortBy('order')
+				->values()
+				->all();
 
         return view('pages.calculator', [
             'products' => $products,

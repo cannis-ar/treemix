@@ -52,8 +52,7 @@
         <div class="container reveal">
             <h2 class="cta__title">¿Necesitás <em>asesoramiento</em>?</h2>
             <p class="cta__text">
-                Nuestro equipo de biotecnólogos puede ayudarte a armar el protocolo ideal para tu cultivo.
-            </p>
+                Nuestro equipo de sensores puede ayudarte a armar el protocolo que se ajuste a tus posibilidades de cultivo.            </p>
             <div class="cta__actions">
                 <a href="{{ route('contact.show') }}" class="btn btn--primary">
                     Hablar con el laboratorio

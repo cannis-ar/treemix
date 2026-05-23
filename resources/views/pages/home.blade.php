@@ -18,7 +18,7 @@
                     cada cultivo.
                 </h1>
                 <p class="hero__lead">
-                    La línea Profesional de Treemix concentra años de desarrollo biotecnológico en formulaciones diseñadas para cultivadores que buscan máxima producción y por sobre todo, calidad.                </p>
+                    La línea Profesional de Treemix se especializa por productos concentrados, con años de desarrollo biotecnológico en formulaciones diseñadas para cultivadores que buscan máxima producción y por sobre todo, calidad.
                 <div class="hero__actions">
                     <a href="{{ route('products.index') }}" class="btn btn--primary">
                         Ver toda la línea
@@ -129,45 +129,45 @@
 </section>
 
 {{-- ===== LAB / NÚMEROS ===== --}}
-<section class="lab">
-    <div class="container">
-        <div class="lab__inner">
-            <div class="lab__visual reveal">
-                <div class="lab__visual-grid"></div>
-                <div class="lab__visual-symbol"></div>
+{{--<section class="lab">--}}
+{{--    <div class="container">--}}
+{{--        <div class="lab__inner">--}}
+{{--            <div class="lab__visual reveal">--}}
+{{--                <div class="lab__visual-grid"></div>--}}
+{{--                <div class="lab__visual-symbol"></div>--}}
 
-                <div class="lab__visual-stat lab__visual-stat--1">
-                    <span class="lab__visual-stat-num">+40%</span>
-                    <span class="lab__visual-stat-label">Retención de agua</span>
-                </div>
-                <div class="lab__visual-stat lab__visual-stat--2">
-                    <span class="lab__visual-stat-num">×3</span>
-                    <span class="lab__visual-stat-label">Microbiota activa</span>
-                </div>
-                <div class="lab__visual-stat lab__visual-stat--3">
-                    <span class="lab__visual-stat-num">+25%</span>
-                    <span class="lab__visual-stat-label">Rendimiento medio</span>
-                </div>
-            </div>
+{{--                <div class="lab__visual-stat lab__visual-stat--1">--}}
+{{--                    <span class="lab__visual-stat-num">+40%</span>--}}
+{{--                    <span class="lab__visual-stat-label">Retención de agua</span>--}}
+{{--                </div>--}}
+{{--                <div class="lab__visual-stat lab__visual-stat--2">--}}
+{{--                    <span class="lab__visual-stat-num">×3</span>--}}
+{{--                    <span class="lab__visual-stat-label">Microbiota activa</span>--}}
+{{--                </div>--}}
+{{--                <div class="lab__visual-stat lab__visual-stat--3">--}}
+{{--                    <span class="lab__visual-stat-num">+25%</span>--}}
+{{--                    <span class="lab__visual-stat-label">Rendimiento medio</span>--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
-            <div class="lab__copy reveal">
-                <span class="eyebrow">Laboratorio Treemix</span>
-                <h2 class="section__title" style="font-size: clamp(2.25rem, 4.5vw, 3.5rem); margin-top:1.5rem;">Datos, no promesas.</h2>
-                <p>
-                    Trabajamos con cultivadores profesionales que utilizan distintos mètodos  de cultivo y aplican nuestros productos en combinaciòn con diferentes planes de cultivo.
-                </p>
-                <p>
-                    Nuestra línea Profesional incorpora cepas seleccionadas y concentraciones aumentadas que en la línea estándar no están disponibles.
-                </p>
+{{--            <div class="lab__copy reveal">--}}
+{{--                <span class="eyebrow">Laboratorio Treemix</span>--}}
+{{--                <h2 class="section__title" style="font-size: clamp(2.25rem, 4.5vw, 3.5rem); margin-top:1.5rem;">Datos, no promesas.</h2>--}}
+{{--                <p>--}}
+{{--                    Trabajamos con cultivadores profesionales que utilizan distintos mètodos  de cultivo y aplican nuestros productos en combinaciòn con diferentes planes de cultivo.--}}
+{{--                </p>--}}
+{{--                <p>--}}
+{{--                    Nuestra línea Profesional incorpora cepas seleccionadas y concentraciones aumentadas que en la web principal no están disponibles.--}}
+{{--                </p>--}}
 
-                <a href="{{ route('resultados') }}" class="btn btn--primary">
-                    Ver resultados
-                    <span class="btn__arrow">→</span>
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
+{{--                <a href="{{ route('resultados') }}" class="btn btn--primary">--}}
+{{--                    Ver resultados--}}
+{{--                    <span class="btn__arrow">→</span>--}}
+{{--                </a>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</section>--}}
 
 {{-- ===== CTA FINAL ===== --}}
 <section class="cta">

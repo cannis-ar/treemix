@@ -25,7 +25,7 @@
                 <ul class="footer__list">
                     <li><a href="{{ route('faq') }}">Preguntas frecuentes</a></li>
                     <li><a href="{{ route('contact.show') }}">Contacto</a></li>
-                    <li><a href="https://treemix.pro" target="_blank" rel="noopener">Línea estándar</a></li>
+                    <li><a href="https://treemix.pro" target="_blank" rel="noopener">Web principal</a></li>
                 </ul>
             </div>
 

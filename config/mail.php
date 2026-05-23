@@ -26,7 +26,7 @@ return [
     ],
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hola@treemix.pro'),
+        'address' => env('MAIL_FROM_ADDRESS', 'info@treemix.pro'),
         'name' => env('MAIL_FROM_NAME', 'Treemix Profesional'),
     ],
 ];

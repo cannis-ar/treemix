@@ -24,7 +24,7 @@ class PageController extends Controller
 					'a' => 'Sí. Toda la línea Profesional está formulada con ingredientes de origen biológico, veganos, agroecológicos y cruelty free. Son compatibles con métodos de cultivo orgánico, living soil e hidroponia (excepto los biominerales, que por su componente orgánico no son aptos para hidroponia).',
 				],
 				[
-					'q' => '¿En qué se diferencia la línea Profesional de la línea estándar?',
+					'q' => '¿En qué se diferencia la línea Profesional de los productos de la web principal?',
 					'a' => 'La línea Profesional utiliza concentraciones aumentadas, lo que se traduce en mayor rendimiento por litro. Además, los productos se entregan recién salidos del laboratorio sin intermediarios, preservando la frescura de los organismos vivos. Los productos biológicos alcanzan su mejor exponencial cuando son recién elaborados. Disponibles en presentaciones de 1, 5 y 20 litros.',
 				],
 				[
@@ -45,7 +45,7 @@ class PageController extends Controller
 				],
 				[
 					'q' => '¿Ofrecen asesoramiento técnico?',
-					'a' => 'Los clientes de la línea Profesional cuentan con soporte directo de nuestro equipo de biotecnólogos: asesoramiento personalizado de protocolos, análisis de resultados y diagnóstico de problemas.',
+					'a' => 'Los clientes de la línea Profesional cuentan con soporte directo de nuestro equipo de consultores: asesoramiento personalizado de protocolos, análisis de resultados y diagnóstico de problemas.',
 				],
 			];
 
