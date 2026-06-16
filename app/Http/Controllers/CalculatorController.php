@@ -7,16 +7,16 @@ use Illuminate\View\View;
 
 class CalculatorController extends Controller
 {
-    public function index(): View
-    {
-			$products = collect(ProductCatalog::all())
-				->where('slug', '!=', 'biodrop')
-				->sortBy('order')
-				->values()
-				->all();
+	public function index(): View
+	{
+		$products = collect(ProductCatalog::all())
+			->where('slug', '!=', 'biodrop')
+			->sortBy('order')
+			->values()
+			->all();
 
-        return view('pages.calculator', [
-            'products' => $products,
-        ]);
-    }
+		return view('pages.calculator', [
+			'products' => $products,
+		]);
+	}
 }

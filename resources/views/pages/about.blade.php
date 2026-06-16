@@ -88,7 +88,7 @@
                     <p style="color: var(--silver-500); font-size: 0.875rem;">Orgánicos · Biológicos · Biominerales</p>
                 </div>
                 <div style="background: var(--bg-coal); padding: 2.5rem 2rem; text-align: center;">
-                    <span class="tech__card-num" style="display: block; text-align: center;">8</span>
+                    <span class="tech__card-num" style="display: block; text-align: center;">10</span>
                     <p style="color: var(--silver-100); font-size: 1rem; font-weight: 500; margin-bottom: 0.5rem;">Años de experiencia</p>
                     <p style="color: var(--silver-500); font-size: 0.875rem;">Perfeccionando fórmulas ciclo a ciclo</p>
                 </div>

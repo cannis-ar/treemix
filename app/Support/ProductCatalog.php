@@ -32,6 +32,10 @@ class ProductCatalog
 					'applications' => 4,
 					'timing'       => 'Solo ante situaciones de siembra y trasplante.',
 				],
+				'dosage_matrix'        => [
+					'radicular' => ['min' => 1, 'med' => 2, 'max' => 3],
+					'foliar'    => ['min' => null, 'med' => null, 'max' => null],
+				],
 				'application_schedule' => ['stage' => 'trasplante', 'frequency' => 'puntual'],
 			],
 			[
@@ -62,6 +66,10 @@ class ProductCatalog
 					'applications' => 'semanal',
 					'timing'       => 'No más de 1 vez por semana durante la etapa vegetativa.',
 				],
+				'dosage_matrix'        => [
+					'radicular' => ['min' => 3, 'med' => null, 'max' => 5],
+					'foliar'    => ['min' => null, 'med' => 3, 'max' => null],
+				],
 				'application_schedule' => ['stage' => 'todo el ciclo', 'frequency' => 'semanal'],
 			],
 			[
@@ -87,6 +95,10 @@ class ProductCatalog
 					'range'        => '4 ml por litro de agua',
 					'applications' => 'quincenal',
 					'timing'       => 'Una vez cada 15 días en etapa vegetativa.',
+				],
+				'dosage_matrix'        => [
+					'radicular' => ['min' => 2, 'med' => null, 'max' => 4],
+					'foliar'    => ['min' => null, 'med' => null, 'max' => null],
 				],
 				'application_schedule' => ['stage' => 'vegetativo', 'frequency' => 'quincenal'],
 			],
@@ -117,11 +129,15 @@ class ProductCatalog
 					'applications' => 6,
 					'timing'       => 'Desde germinación hasta pre-floración, 5 aplicaciones promedio.',
 				],
+				'dosage_matrix'        => [
+					'radicular' => ['min' => null, 'med' => 5, 'max' => null],
+					'foliar'    => ['min' => null, 'med' => 5, 'max' => null],
+				],
 				'application_schedule' => ['stage' => 'vegetativo', 'frequency' => 'semanal'],
 			],
 			[
 				'slug'        => 'treemix-a',
-				'name'        => 'Treemix A',
+				'name'        => 'Tree Mix A',
 				'tagline'     => 'Calidad y producción',
 				'short'       => 'Potencia la calidad y el rendimiento del fruto. Fórmula para pre-flora y floración.',
 				'description' => 'Bioestimulante de floración que aumenta la producción, el peso e intensifica el sabor. Contiene péptidos biológicos bioactivos de rápida asimilación. Puede combinarse con fertilizantes de otras marcas para potenciar su absorción, y funciona también como biopotenciador de germinación.',
@@ -144,6 +160,10 @@ class ProductCatalog
 					'range'        => '2 a 4 ml según efecto deseado',
 					'applications' => 4,
 					'timing'       => '2 aplicaciones radiculares y 2 foliares entre pre-floración y floración.',
+				],
+				'dosage_matrix'        => [
+					'radicular' => ['min' => 2, 'med' => 4, 'max' => null],
+					'foliar'    => ['min' => null, 'med' => 2, 'max' => null],
 				],
 				'application_schedule' => ['stage' => 'floracion', 'frequency' => 'semanal'],
 			],
@@ -173,6 +193,10 @@ class ProductCatalog
 					'applications' => 4,
 					'timing'       => 'En vegetación una dosis, en floración tres dosis.',
 				],
+				'dosage_matrix'        => [
+					'radicular' => ['min' => 2, 'med' => 3, 'max' => 4],
+					'foliar'    => ['min' => 1, 'med' => 2, 'max' => null],
+				],
 				'application_schedule' => ['stage' => 'floracion', 'frequency' => 'semanal'],
 			],
 			[
@@ -199,6 +223,10 @@ class ProductCatalog
 					'range'        => '3 a 5 ml según efecto deseado',
 					'applications' => 4,
 					'timing'       => 'No más de una aplicación semanal en etapa de floración.',
+				],
+				'dosage_matrix'        => [
+					'radicular' => ['min' => null, 'med' => 3, 'max' => 5],
+					'foliar'    => ['min' => null, 'med' => null, 'max' => null],
 				],
 				'application_schedule' => ['stage' => 'engorde', 'frequency' => 'semanal'],
 			],
@@ -227,6 +255,10 @@ class ProductCatalog
 					'range'        => '1 a 3 ml según efecto deseado',
 					'applications' => 'gradual',
 					'timing'       => 'Una vez por semana. Optativo en vegetativo, recomendado en floración.',
+				],
+				'dosage_matrix'        => [
+					'radicular' => ['min' => 1, 'med' => 3, 'max' => 5],
+					'foliar'    => ['min' => 1, 'med' => 2, 'max' => null],
 				],
 				'application_schedule' => ['stage' => 'vegetativo', 'frequency' => 'semanal'],
 				'dosage_by_stage'      => [
@@ -293,6 +325,10 @@ class ProductCatalog
 					'applications' => 'a demanda',
 					'timing'       => 'Mínimo 2 aplicaciones cada 3 a 7 días según variedad de insecto.',
 				],
+				'dosage_matrix'        => [
+					'radicular' => ['min' => null, 'med' => null, 'max' => null],
+					'foliar'    => ['min' => null, 'med' => 3, 'max' => 5],
+				],
 				'application_schedule' => ['stage' => 'todo el ciclo', 'frequency' => 'a demanda'],
 			],
 			[
@@ -318,6 +354,10 @@ class ProductCatalog
 					'range'        => '1 a 2 ml cada 10 m² o por litro de agua',
 					'applications' => 'a demanda',
 					'timing'       => 'En living soil: cada 15 días. En otros métodos: según necesidad.',
+				],
+				'dosage_matrix'        => [
+					'radicular' => ['min' => 1, 'med' => 2, 'max' => 3],
+					'foliar'    => ['min' => null, 'med' => null, 'max' => null],
 				],
 				'application_schedule' => ['stage' => 'todo el ciclo', 'frequency' => 'a demanda'],
 			],

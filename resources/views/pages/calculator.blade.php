@@ -17,7 +17,7 @@
                 <span class="eyebrow">Herramienta profesional</span>
                 <h1 class="section__title">Calculadora de <em>dosis</em>.</h1>
                 <p class="section__intro">
-                    Seleccioná los productos, ingresá los litros de agua por aplicación y obtené la dosis exacta al instante.
+                    Seleccioná los productos, elegí el modo de aplicación y la dosis, ingresá los litros de agua y obtené la cantidad exacta al instante.
                 </p>
             </div>
         </div>
@@ -84,6 +84,8 @@
                                 <thead>
                                 <tr>
                                     <th>Producto</th>
+                                    <th>Aplicación</th>
+                                    <th>Dosis</th>
                                     <th class="text-right">ml / L</th>
                                     <th class="text-right">Litros agua</th>
                                     <th class="text-right">Aplicaciones</th>
@@ -199,6 +201,16 @@
         .calc-input[type=number] {
             -moz-appearance: textfield !important;
         }
+
+        /* Controles segmentados (Aplicación / Dosis) */
+        .ct-seg { display: inline-flex; border: 1px solid rgba(200, 200, 208, 0.16); border-radius: 8px; overflow: hidden; background: rgba(10, 10, 11, 0.6); }
+        .ct-seg__btn { appearance: none; background: transparent; border: none; border-left: 1px solid rgba(200, 200, 208, 0.1); color: var(--silver-500); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.4rem 0.6rem; cursor: pointer; transition: all 0.25s; white-space: nowrap; line-height: 1; }
+        .ct-seg__btn:first-child { border-left: none; }
+        .ct-seg__btn:hover:not(:disabled):not(.is-active) { color: var(--silver-200); background: rgba(200, 200, 208, 0.05); }
+        .ct-seg__btn.is-active { background: var(--silver-gradient); color: var(--bg-void); }
+        .ct-seg__btn:disabled { opacity: 0.25; cursor: not-allowed; color: var(--silver-700); }
+        .ct-method-static { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--silver-500); font-weight: 600; white-space: nowrap; }
+
         @media (max-width: 860px) { .calc-layout { grid-template-columns: 1fr; } }
         @media (max-width: 600px) { .calc-card { padding: 1.5rem; } .calc-table thead th, .calc-table tbody td { padding-left: 0.5rem; padding-right: 0.5rem; } }
     </style>
@@ -210,12 +222,21 @@
             const PRODUCTS = JSON.parse(document.getElementById('productData').textContent);
             window.productsData = PRODUCTS;
 
+            const LEVELS = ['min', 'med', 'max'];
+            const LEVEL_LABELS = { min: 'Mín', med: 'Med', max: 'Máx' };
+            const METHODS = ['radicular', 'foliar'];
+            const METHOD_LABELS = { radicular: 'Radicular', foliar: 'Foliar' };
+
             const tableBody = document.getElementById('calcTableBody');
             const calcTable = document.getElementById('calcTable');
             const calcEmpty = document.getElementById('calcEmpty');
             const summaryProducts = document.getElementById('summaryProducts');
             const summaryTotal = document.getElementById('summaryTotal');
 
+            // Estado por producto: slug -> { method, level, water, apps }
+            const state = new Map();
+
+            /* ---------- helpers de formato ---------- */
             function formatMl(ml) {
                 if (ml <= 0) return '0 ml';
                 if (ml >= 1000) return (ml / 1000).toFixed(3).replace(/\.?0+$/, '') + ' L';
@@ -250,6 +271,69 @@
                 return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
             }
 
+            /* ---------- helpers de dosis ---------- */
+            function getMatrix(product) {
+                return product.dosage_matrix || null;
+            }
+
+            function hasValue(matrix, method, level) {
+                return !!(matrix && matrix[method] && matrix[method][level] != null && matrix[method][level] > 0);
+            }
+
+            function availableMethods(matrix) {
+                return METHODS.filter(m => LEVELS.some(l => hasValue(matrix, m, l)));
+            }
+
+            function availableLevels(matrix, method) {
+                return LEVELS.filter(l => hasValue(matrix, method, l));
+            }
+
+            // Elige un método válido, respetando la preferencia previa si sigue disponible.
+            function pickMethod(matrix, preferred) {
+                const methods = availableMethods(matrix);
+                if (preferred && methods.includes(preferred)) return preferred;
+                if (methods.includes('radicular')) return 'radicular';
+                return methods[0] || 'radicular';
+            }
+
+            // Elige un nivel válido para el método dado (prioriza med > min > max).
+            function pickLevel(matrix, method, preferred) {
+                const levels = availableLevels(matrix, method);
+                if (preferred && levels.includes(preferred)) return preferred;
+                if (levels.includes('med')) return 'med';
+                if (levels.includes('min')) return 'min';
+                if (levels.includes('max')) return 'max';
+                return levels[0] || 'med';
+            }
+
+            // Resuelve ml/L según método + nivel; cae al valor legacy si no hay matriz.
+            function resolveMlPerL(product, method, level) {
+                const matrix = getMatrix(product);
+                if (hasValue(matrix, method, level)) return matrix[method][level];
+                return (product.dosage && product.dosage.ml_per_liter) || 0;
+            }
+
+            function getDefaultApps(product) {
+                const apps = product.dosage && product.dosage.applications;
+                return typeof apps === 'number' ? apps : 1;
+            }
+
+            // Garantiza estado para un producto, re-validando método/nivel contra lo disponible.
+            function ensureState(product) {
+                const matrix = getMatrix(product);
+                let s = state.get(product.slug);
+                if (!s) {
+                    const method = pickMethod(matrix, null);
+                    const level = pickLevel(matrix, method, null);
+                    s = { method: method, level: level, water: 0, apps: getDefaultApps(product) };
+                    state.set(product.slug, s);
+                } else {
+                    s.method = pickMethod(matrix, s.method);
+                    s.level = pickLevel(matrix, s.method, s.level);
+                }
+                return s;
+            }
+
             function getChecked() {
                 return [...document.querySelectorAll('.calc-product__checkbox')].filter(cb => cb.checked).map(cb => cb.value);
             }
@@ -259,6 +343,31 @@
                 label.classList.toggle('is-checked', cb.checked);
             }
 
+            /* ---------- render de controles ---------- */
+            function methodControl(product, s) {
+                const matrix = getMatrix(product);
+                const methods = availableMethods(matrix);
+                if (methods.length <= 1) {
+                    const only = methods[0] || null;
+                    return `<span class="ct-method-static">${only ? METHOD_LABELS[only] : '—'}</span>`;
+                }
+                return `<div class="ct-seg ct-seg--method" role="group" aria-label="Método de aplicación">` +
+                    methods.map(m => `<button type="button" class="ct-seg__btn${m === s.method ? ' is-active' : ''}" data-slug="${product.slug}" data-method="${m}">${METHOD_LABELS[m]}</button>`).join('') +
+                    `</div>`;
+            }
+
+            function levelControl(product, s) {
+                const matrix = getMatrix(product);
+                return `<div class="ct-seg ct-seg--level" role="group" aria-label="Nivel de dosis">` +
+                    LEVELS.map(l => {
+                        const enabled = hasValue(matrix, s.method, l);
+                        const active = enabled && l === s.level;
+                        return `<button type="button" class="ct-seg__btn${active ? ' is-active' : ''}" data-slug="${product.slug}" data-level="${l}"${enabled ? '' : ' disabled'}>${LEVEL_LABELS[l]}</button>`;
+                    }).join('') +
+                    `</div>`;
+            }
+
+            /* ---------- render principal ---------- */
             function update() {
                 const slugs = getChecked();
                 const active = PRODUCTS.filter(p => slugs.includes(p.slug));
@@ -277,24 +386,24 @@
                 let rows = '';
 
                 active.forEach(product => {
-                    const dosage = product.dosage || {};
+                    const s = ensureState(product);
                     const schedule = product.application_schedule || {};
                     const sk = stageKey(schedule.stage);
                     const sc = stageCssClass(sk);
                     const sdisplay = stageDisplay(schedule.stage);
-                    const mlPerL = dosage.ml_per_liter || 0;
-                    const apps = dosage.applications || 0;
-                    const defaultApps = typeof apps === 'number' ? apps : 1;
+                    const mlPerL = resolveMlPerL(product, s.method, s.level);
 
                     rows += `
             <tr>
                 <td><span class="ct-name">${escHtml(product.name)}</span></td>
-                <td class="text-right"><span class="ct-num">${mlPerL}</span></td>
+                <td>${methodControl(product, s)}</td>
+                <td>${levelControl(product, s)}</td>
+                <td class="text-right"><span class="ct-num ct-mlperl" data-slug="${product.slug}">${mlPerL}</span></td>
                 <td class="text-right">
-                    <input type="number" class="calc-input calc-water-input" data-slug="${product.slug}" value="0" min="0" step="0.5" placeholder="0">
+                    <input type="number" class="calc-input calc-water-input" data-slug="${product.slug}" value="${s.water}" min="0" step="0.5" placeholder="0">
                 </td>
                 <td class="text-right">
-                    <input type="number" class="calc-input calc-apps-input" data-slug="${product.slug}" value="${defaultApps}" min="0" step="1" placeholder="0">
+                    <input type="number" class="calc-input calc-apps-input" data-slug="${product.slug}" value="${s.apps}" min="0" step="1" placeholder="0">
                 </td>
                 <td class="text-right"><span class="ct-total calc-result" data-slug="${product.slug}">0 ml</span></td>
                 <td><span class="ct-stage ct-stage--${sc}">${escHtml(sdisplay)}</span></td>
@@ -304,37 +413,85 @@
                 tableBody.innerHTML = rows;
                 summaryProducts.textContent = active.length;
 
-                document.querySelectorAll('.calc-water-input, .calc-apps-input').forEach(input => {
-                    input.addEventListener('input', calculateTotal);
-                });
-
+                bindRowEvents();
                 calculateTotal();
             }
 
+            /* ---------- eventos de cada fila ---------- */
+            function bindRowEvents() {
+                document.querySelectorAll('.calc-water-input').forEach(input => {
+                    input.addEventListener('input', () => {
+                        const s = state.get(input.dataset.slug);
+                        if (s) s.water = parseFloat(input.value) || 0;
+                        calculateTotal();
+                    });
+                });
+
+                document.querySelectorAll('.calc-apps-input').forEach(input => {
+                    input.addEventListener('input', () => {
+                        const s = state.get(input.dataset.slug);
+                        if (s) s.apps = parseFloat(input.value) || 0;
+                        calculateTotal();
+                    });
+                });
+
+                // Cambio de método: re-renderiza para refrescar qué niveles quedan habilitados.
+                document.querySelectorAll('.ct-seg--method .ct-seg__btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const slug = btn.dataset.slug;
+                        const product = PRODUCTS.find(p => p.slug === slug);
+                        const s = state.get(slug);
+                        if (!product || !s) return;
+                        s.method = btn.dataset.method;
+                        s.level = pickLevel(getMatrix(product), s.method, s.level);
+                        update();
+                    });
+                });
+
+                // Cambio de nivel: actualización parcial (sin re-render completo).
+                document.querySelectorAll('.ct-seg--level .ct-seg__btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        if (btn.disabled) return;
+                        const slug = btn.dataset.slug;
+                        const s = state.get(slug);
+                        const product = PRODUCTS.find(p => p.slug === slug);
+                        if (!s || !product) return;
+
+                        s.level = btn.dataset.level;
+
+                        const group = btn.closest('.ct-seg--level');
+                        group.querySelectorAll('.ct-seg__btn').forEach(b => b.classList.toggle('is-active', b === btn));
+
+                        const mlEl = document.querySelector(`.ct-mlperl[data-slug="${slug}"]`);
+                        if (mlEl) mlEl.textContent = resolveMlPerL(product, s.method, s.level);
+
+                        calculateTotal();
+                    });
+                });
+            }
+
+            /* ---------- cálculo de totales ---------- */
             function calculateTotal() {
                 let grandTotal = 0;
 
-                document.querySelectorAll('.calc-water-input').forEach(input => {
-                    const slug = input.dataset.slug;
-                    const waterLiters = parseFloat(input.value) || 0;
-                    const appsInput = document.querySelector(`.calc-apps-input[data-slug="${slug}"]`);
-                    const apps = parseFloat(appsInput?.value) || 0;
+                state.forEach((s, slug) => {
+                    const resultEl = document.querySelector(`.calc-result[data-slug="${slug}"]`);
+                    if (!resultEl) return; // producto no visible (destildado)
+
                     const product = PRODUCTS.find(p => p.slug === slug);
+                    if (!product) return;
 
-                    if (product) {
-                        const mlPerL = product.dosage?.ml_per_liter || 0;
-                        const totalMl = mlPerL * waterLiters * apps;
+                    const mlPerL = resolveMlPerL(product, s.method, s.level);
+                    const totalMl = mlPerL * (s.water || 0) * (s.apps || 0);
 
-                        const resultEl = document.querySelector(`.calc-result[data-slug="${slug}"]`);
-                        if (resultEl) resultEl.textContent = formatMl(totalMl);
-
-                        grandTotal += totalMl;
-                    }
+                    resultEl.textContent = formatMl(totalMl);
+                    grandTotal += totalMl;
                 });
 
                 summaryTotal.textContent = formatMl(grandTotal);
             }
 
+            /* ---------- controles superiores ---------- */
             document.getElementById('selectAll').addEventListener('click', () => {
                 document.querySelectorAll('.calc-product__checkbox').forEach(cb => {
                     cb.checked = true;
@@ -352,7 +509,6 @@
             });
 
             document.querySelectorAll('.calc-product').forEach(label => {
-                const cb = label.querySelector('.calc-product__checkbox');
                 syncProductVisual(label);
                 label.addEventListener('change', () => {
                     syncProductVisual(label);

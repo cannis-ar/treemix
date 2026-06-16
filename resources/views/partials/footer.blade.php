@@ -6,7 +6,7 @@
                 <p class="footer__tagline">Biotecnología <em style="font-family: var(--font-display); font-style: italic; font-weight:300;">premium</em> para cultivos de alto rendimiento.</p>
                 <address class="footer__address">
                     Elaborado en Buenos Aires, Argentina.<br>
-                    hola@treemix.pro
+                    info@treemix.pro
                 </address>
             </div>
 
