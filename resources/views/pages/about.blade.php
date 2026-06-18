@@ -54,8 +54,7 @@
                     <span class="tech__card-num">02</span>
                     <h3 class="tech__card-title">Trayectoria</h3>
                     <p class="tech__card-text">
-                        Contamos con 10 años de experiencia en el mercado, lo que nos ha permitido perfeccionar nuestras fórmulas y procesos
-                        para satisfacer las necesidades de nuestros clientes ciclo tras ciclo.
+                        Contamos con 10 años  de experiencia en el mercado (desde 2016), lo que nos ha permitido perfeccionar nuestras fórmulas y procesos para satisfacer las necesidades de nuestros clientes ciclo tras ciclo.
                     </p>
                 </div>
                 <div class="tech__card">

@@ -9,7 +9,7 @@ class ProductCatalog
 		return [
 			[
 				'slug'        => 'tree-mix-mico',
-				'name'        => 'Tree Mix MICO',
+				'name'        => 'TreeMix MICO',
 				'tagline'     => 'Inoculante de micorrizas',
 				'short'       => 'Expande la red radicular. Potencia la absorción de agua y nutrientes desde el trasplante.',
 				'description' => 'Inoculante micorrízico de alta concentración que coloniza las raíces y extiende el sistema radicular. Mejora la absorción de fósforo, agua y micronutrientes, reduciendo el estrés en trasplante y acelerando el establecimiento.',
@@ -40,7 +40,7 @@ class ProductCatalog
 			],
 			[
 				'slug'        => 'tree-mix-pro',
-				'name'        => 'Tree Mix PRO',
+				'name'        => 'TreeMix PRO',
 				'tagline'     => 'Bioestimulante base',
 				'short'       => 'Estimula y protege en todo el ciclo. Fórmula base de la línea profesional.',
 				'description' => 'Bioestimulante y promotor de crecimiento con control biológico contra patógenos. Al estar inoculado y ya activado, genera resultados visibles a las 24 hs de aplicado. Potencia la absorción de nutrientes, garantiza frondosidad y actúa como preventivo contra hongos.',
@@ -74,7 +74,7 @@ class ProductCatalog
 			],
 			[
 				'slug'        => 'tree-mix-n',
-				'name'        => 'Tree Mix N',
+				'name'        => 'TreeMix N',
 				'tagline'     => 'Complemento vegetativo',
 				'short'       => 'Complemento nitrogenado para etapa vegetativa. Potencia el crecimiento y el follaje.',
 				'description' => 'Complemento de nutrición biomineral para etapa vegetativa. Producto ideal para cultivos LED por su aporte de calcio. Es el complemento ideal ante el uso de bioestimulantes, para nutrir a la planta y que pueda crecer con vigorosidad.',
@@ -104,7 +104,7 @@ class ProductCatalog
 			],
 			[
 				'slug'        => 'biok-nn',
-				'name'        => 'Tree Mix BioK-NN',
+				'name'        => 'TreeMix BioK-NN',
 				'tagline'     => 'Producto exclusivo',
 				'short'       => 'Aumenta cannabinoides hasta un 50% más. Fija nitrógeno atmosférico. Optimiza el rendimiento en etapas vegetativas y de floración.',
 				'description' => 'Producto biológico 100% natural que transforma los cultivos mediante fijación biológica de nitrógeno atmosférico. Potencia cannabinoides hasta un 50% más, mejora la absorción de nutrientes y optimiza el ROI en producción. Reemplaza los cultivos de cobertura y reduce el uso de fertilizantes.',
@@ -137,7 +137,7 @@ class ProductCatalog
 			],
 			[
 				'slug'        => 'treemix-a',
-				'name'        => 'Tree Mix A',
+				'name'        => 'TreeMix A',
 				'tagline'     => 'Calidad y producción',
 				'short'       => 'Potencia la calidad y el rendimiento del fruto. Fórmula para pre-flora y floración.',
 				'description' => 'Bioestimulante de floración que aumenta la producción, el peso e intensifica el sabor. Contiene péptidos biológicos bioactivos de rápida asimilación. Puede combinarse con fertilizantes de otras marcas para potenciar su absorción, y funciona también como biopotenciador de germinación.',
@@ -169,7 +169,7 @@ class ProductCatalog
 			],
 			[
 				'slug'        => 'tree-mix-f',
-				'name'        => 'Tree Mix F',
+				'name'        => 'TreeMix F',
 				'tagline'     => 'Booster de floración',
 				'short'       => 'Estimulante del sistema inmune. Aumenta peso y densidad de los frutos.',
 				'description' => 'Actúa sobre el sistema hormonal de la planta a través de la Resistencia Sistémica Inducida. Los inductores fitofortificantes activan el sistema defensivo, mejorando la resistencia a plagas y enfermedades. Contiene altos niveles de fósforo y potasio con propiedades preventivas y curativas.',
@@ -200,11 +200,11 @@ class ProductCatalog
 				'application_schedule' => ['stage' => 'floracion', 'frequency' => 'semanal'],
 			],
 			[
-				'slug'        => 'candy-shock',
-				'name'        => 'Candy Shock',
+				'slug'        => 'candy',
+				'name'        => 'Candy',
 				'tagline'     => 'Reemplazo de melazas',
 				'short'       => 'Mejora sabor, aroma y vigor. Aumenta rendimiento y peso. 100% orgánico.',
-				'description' => 'Mezcla de carbohidratos, vinaza y bioestimulantes que potencia las características organolépticas del producto final. Reemplaza el uso de melazas con un perfil más limpio. Se recomienda combinar con Tree Mix PRO para potenciar la reproducción de vida microbiana en el sustrato.',
+				'description' => 'Mezcla de carbohidratos, vinaza y bioestimulantes que potencia las características organolépticas del producto final. Reemplaza el uso de melazas con un perfil más limpio. Se recomienda combinar con TreeMix PRO para potenciar la reproducción de vida microbiana en el sustrato.',
 				'composition' => 'Carbohidratos, vinaza y bioestimulantes.',
 				'features'    => [
 					'Mejora sabor y aroma del producto final',
@@ -232,7 +232,7 @@ class ProductCatalog
 			],
 			[
 				'slug'        => 'zym',
-				'name'        => 'Tree Mix ZYM',
+				'name'        => 'TreeMix ZYM',
 				'tagline'     => 'Bioestimulante enzimático',
 				'short'       => 'Acelera la actividad biológica y crecimiento. Enzimas recuperadoras de suelo.',
 				'description' => 'Complejo enzimático que activa los microorganismos beneficiosos del sustrato para descomponer restos orgánicos e inorgánicos, transformándolos en nutrientes esenciales. Acelera en horas lo que normalmente lleva días, permite reutilizar el sustrato y ofrece protección contra sobrefertilizaciones accidentales.',
@@ -269,7 +269,7 @@ class ProductCatalog
 			],
 			[
 				'slug'        => 'biodrop',
-				'name'        => 'Tree Mix BioDrop',
+				'name'        => 'TreeMix BioDrop',
 				'tagline'     => 'Solución de riego',
 				'short'       => 'Tecnología aglutinante de agua y minerales. Hasta 10 días sin regar. Biodegradable.',
 				'description' => 'Tecnología aglutinante de agua que genera un reservorio para los cultivos. Una vez agotada el agua del sustrato, las raíces absorben el agua retenida en BioDrop. Libre de derivados del petróleo, sin nutrientes añadidos pero retiene los del sustrato. Vegano, cruelty-free y biodegradable.',
