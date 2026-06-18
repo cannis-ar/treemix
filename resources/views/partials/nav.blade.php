@@ -4,7 +4,7 @@
             <a href="{{ route('home') }}" class="nav__brand" aria-label="Treemix Profesional - Inicio">
                 <img src="{{ asset('treemix.webp') }}" alt="" class="nav__brand-logo">
                 <span class="nav__brand-text">
-                    <span>Tree<span style="color: forestgreen"> Mix</span></span>
+                    <span>Tree<span style="color: forestgreen">Mix</span></span>
                     <small>Profesional</small>
                 </span>
             </a>
